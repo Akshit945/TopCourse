@@ -20,6 +20,7 @@ const App = () => {
   //set loading is true at start
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState(filterData[0].title); //it is initialized with 'All'
+  //const [error, setError] = useState(false);
 
   //fetchData function saare ke saare courses ka data nikalehga
   async function fetchData() {
@@ -31,10 +32,11 @@ const App = () => {
       setCourses(output.data);
       console.log(output.data);
       //courses=output.data=>we need data key
+      setLoading(false);
     } catch (error) {
       toast.error("There is some problem in network");
+      //  setError(true);
     }
-    setLoading(false);
   }
 
   //run at first render AND we are fetching api data
@@ -59,6 +61,7 @@ const App = () => {
           className="w-11/12 max-w-[1200px] 
         mx-auto flex flex-wrap justify-center items-center min-h-[50vh]"
         >
+          {}
           {/* if loading is true show spinner */}
           {loading ? (
             <Spinner />
